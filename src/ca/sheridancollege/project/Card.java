@@ -12,23 +12,27 @@ package ca.sheridancollege.project;
  * @author Rishabdeep Singh 10-09-2024
  */
 
-import java.util.List;
+
 
 public class Card {
-    private List<String> symbols; 
+    private String rank;
+    private String suit;
 
-    public Card(List<String> symbols) {
-        this.symbols = symbols;
+    public Card(String rank, String suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public String getSuit() {
+        return suit;
     }
 
     @Override
     public String toString() {
-        return "Card{" +
-                "symbols=" + symbols +
-                '}';
-    }
-
-    public List<String> getSymbols() {
-        return symbols;
+        return rank + " of " + suit;
     }
 }
