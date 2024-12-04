@@ -1,54 +1,41 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- * @author Rishabdeep Singh 10-09-2024
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ca.sheridancollege.project;
-
+import java.util.Map;
+import java.util.Scanner;
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
+ *
+ * @author Jaspreet Singh
  */
-
-import java.util.ArrayList;
-
-
 public class Player {
-    private String name; 
-    private ArrayList<Card> hand; 
-    private int cardsPlayed; 
+     private Scanner scanner = new Scanner(System.in);
 
-    public Player(String name) {
-        this.name = name;
-        this.hand = new ArrayList<>();
-        this.cardsPlayed = 0; 
+    public void displayCards(Card card1, Card card2) {
+        System.out.println("Card 1: " + card1);
+        System.out.println("Card 2: " + card2);
     }
 
-    public String getName() {
-        return name;
+    public String getMatchFromPlayer() {
+        System.out.print("Enter the matching rank or suit: ");
+        return scanner.nextLine();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPlayerInput(String message) {
+        System.out.print(message);
+        return scanner.nextLine();
     }
 
-    public ArrayList<Card> getHand() {
-        return hand;
+    public void displayMessage(String message) {
+        System.out.println(message);
     }
 
-    public void addCard(Card card) {
-        hand.add(card);
+    public void displayScores(Map<String, Integer> scores) {
+        System.out.println("Scores:");
+        for (Map.Entry<String, Integer> entry : scores.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
     }
-
-    public void incrementCardsPlayed() {
-        cardsPlayed++;
-    }
-
-    public int getCardsPlayed() {
-        return cardsPlayed;
-    }
-
-    public void play() {
-        
-    }
+    
 }
