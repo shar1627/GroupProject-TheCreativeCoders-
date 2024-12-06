@@ -1,41 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * SYST 17796 Project Base code.
+ * Students can modify and extend to implement their game.
+ * Add your name as an author and the date!
  */
 package ca.sheridancollege.project;
-import java.util.Map;
-import java.util.Scanner;
+
 /**
+ * A class that models each Player in the game. Players have an identifier, which should be unique.
  *
- * @author Jaspreet Singh
+ * @author Simarpartap
+ * @author Paul Bonenfant Jan 2020
  */
-public class Player {
-     private Scanner scanner = new Scanner(System.in);
+public abstract class Player {
 
-    public void displayCards(Card card1, Card card2) {
-        System.out.println("Card 1: " + card1);
-        System.out.println("Card 2: " + card2);
+    private String name; //the unique name for this player
+
+    /**
+     * A constructor that allows you to set the player's unique ID
+     *
+     * @param name the unique ID to assign to this player.
+     */
+    public Player(String name) {
+        this.name = name;
     }
 
-    public String getMatchFromPlayer() {
-        System.out.print("Enter the matching rank or suit: ");
-        return scanner.nextLine();
+    /**
+     * @return the player name
+     */
+    public String getName() {
+        return name;
     }
 
-    public String getPlayerInput(String message) {
-        System.out.print(message);
-        return scanner.nextLine();
+    /**
+     * Ensure that the playerID is unique
+     *
+     * @param name the player name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void displayMessage(String message) {
-        System.out.println(message);
-    }
+    /**
+     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
+     * with logic to play your game.
+     */
+    public abstract void play();
 
-    public void displayScores(Map<String, Integer> scores) {
-        System.out.println("Scores:");
-        for (Map.Entry<String, Integer> entry : scores.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-    }
-    
 }

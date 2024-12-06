@@ -1,42 +1,58 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * SYST 17796 Project Base code.
+ * Students can modify and extend to implement their game.
+ * Add your name as an author and the date!
  */
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 /**
+ * The class that models your game. You should create a more specific child of this class and instantiate the methods
+ * given.
  *
- * @author Simarpartap Singh Jaura 
+ * @author Simarpartap
+ * @author Paul Bonenfant Jan 2020
  */
-public class Game {
-    public static void main(String[] args) {
-        Player view = new Player();
+public abstract class Game {
 
-        // Generate a deck of cards
-        List<Card> deck = generateDeck();
+    private final String name;//the title of the game
+    private ArrayList<Player> players;// the players of the game
 
-        GroupOfCards controller = new GroupOfCards(deck, view);
-
-        controller.addPlayer("Player 1");
-        controller.addPlayer("Player 2");
-
-        controller.startGame();
+    public Game(String name) {
+        this.name = name;
+        players = new ArrayList();
     }
 
-    private static List<Card> generateDeck() {
-        List<String> ranks = Arrays.asList("Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King");
-        List<String> suits = Arrays.asList("Hearts", "Diamonds", "Clubs", "Spades");
-
-        List<Card> deck = new ArrayList<>();
-        for (String rank : ranks) {
-            for (String suit : suits) {
-                deck.add(new Card(rank, suit));
-            }
-        }
-        return deck;
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
-    
-}
+
+    /**
+     * @return the players of this game
+     */
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    /**
+     * @param players the players of this game
+     */
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    /**
+     * Play the game. This might be one method or many method calls depending on your game.
+     */
+    public abstract void play();
+
+    /**
+     * When the game is over, use this method to declare and display a winning player.
+     */
+    public abstract void declareWinner();
+
+}//end class
